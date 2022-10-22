@@ -34,7 +34,7 @@ object mundo {
 		if (! position.x().between(0, game.width() -1)){
 			 _aragorn.error("Posicion fuera de ancho")
 		}	
-		if(! position.y().between(0, game.height() - 1)) {
+		if(! position.y().between(0, game.height() -1)) {
 			_aragorn.error("Posicion fuera de alto")
 		}
 	}
@@ -46,10 +46,11 @@ object movimiento{
 		keyboard.right().onPressDo{ self.mover(derecha,visual) }
 		keyboard.up().onPressDo{ self.mover(arriba,visual) }
 		keyboard.down().onPressDo{ self.mover(abajo,visual) }
-		//keyboard.space().onPressDo{visual.atacar()}
+		keyboard.space().onPressDo{visual.atacar()}
 		//keyboard.d().onPressDo{visual.depositarEnCofre()}
 			
 	}
+	
 	method mover(direccion,personaje){
 		personaje.mover(direccion)		
 	}

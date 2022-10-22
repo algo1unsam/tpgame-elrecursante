@@ -1,10 +1,11 @@
 import wollok.game.*
 import movimiento.*
+import enemigos.*
 
 object aragorn{
 	var property position= game.at(12, 0)
 	var property vida = 10
-	var property orientacion = abajo
+	var property orientacion = derecha
 	
 	method validarPosition(_position){
 		mundo.validarPosition(_position, self)
@@ -26,8 +27,28 @@ object aragorn{
 		return "personaje/aragorn" + orientacion.nombre() + ".png"
 	}	
 	
+	method meAtacaron(valor){
+		self.restarVida(valor)
+	}
+	
+	method restarVida(valor){
+		if(vida < 5){
+			game.say(self, "Cuidado, me queda "+vida+" de vida!")
+		}
+		if(vida > 0){
+			vida = vida - valor
+		}else {
+			self.murio()
+		}
+	}
+	
 	method murio(){
 		return (vida==0)
 	}
+	
+	method atacar(){
+		
+	}
+	
 }
 

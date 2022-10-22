@@ -3,18 +3,20 @@ import personaje.*
 import movimiento.*
 
 class Objeto{
-	var property position = game.origin()
-	var property image
 	method teEncontro(alguien){}
+	
 	method meAtacaron(valor){}
 	
 	method soyEnemigo(){return false}
 	
+	method soyArma(){return false}
 	
 }
 
-class Enemigo inherits Objeto(image="enemigos/orco.png", position = game.at(2, 0)) {
+class Enemigo inherits Objeto{
 	var property vida = 1
+	var property image
+	var property position = game.origin()
 	
 	override method soyEnemigo(){return true}
 	
@@ -45,6 +47,29 @@ class Enemigo inherits Objeto(image="enemigos/orco.png", position = game.at(2, 0
 			if (vida == 0){
 				game.removeVisual(self)
 			}	
+	}
+	
+	method ejecutarMovimiento(){
+		game.onTick(2000, "movimiento", {self.seguirHeroe()})
+	}
+	
+	
+}
+
+class Arma inherits Objeto {
+	override method soyArma(){return true}
+	
+	method atacar(armaDefault){
+		self.verQueHayAbajoYGenerarDanio(armaDefault)
+	}
+	
+	method verQueHayAbajoYGenerarDanio(enemigo){
+		if (game.hasVisual(enemigo)){
+			const objetosDebajo = game.colliders(enemigo)
+			if(!objetosDebajo.isEmpty()){
+				objetosDebajo.forEach({ objeto =>  objeto.meAtacaron(1) })
+			}
+		}
 	}
 }
 
