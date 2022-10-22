@@ -2,7 +2,7 @@ import wollok.game.*
 import movimiento.*
 
 object aragorn{
-	var property position=game.center()
+	var property position= game.at(12, 0)
 	var property vida = 10
 	var property orientacion = abajo
 	

@@ -2,6 +2,7 @@ import wollok.game.*
 import fondoMordor.*
 import movimiento.*
 import personaje.*
+import enemigos.*
 
 program juego {
 	game.title("Lord Of The Rings")
@@ -9,6 +10,8 @@ program juego {
 	game.height(15)
 	game.addVisual(mordor)
 	game.addVisual(aragorn)
+	const urukhai = new Enemigo()
+	game.addVisual(urukhai)
 	movimiento.configurarFlechas(aragorn)
 	game.start()
 }
