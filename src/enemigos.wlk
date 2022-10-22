@@ -57,6 +57,7 @@ class Enemigo inherits Objeto{
 }
 
 class Arma inherits Objeto {
+	
 	override method soyArma(){return true}
 	
 	method atacar(armaDefault){
@@ -73,3 +74,4 @@ class Arma inherits Objeto {
 	}
 }
 
+const default = new Arma()

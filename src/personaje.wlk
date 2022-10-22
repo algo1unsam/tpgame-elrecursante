@@ -46,9 +46,5 @@ object aragorn{
 		return (vida==0)
 	}
 	
-	method atacar(){
-		
-	}
-	
 }
 

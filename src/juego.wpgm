@@ -3,19 +3,10 @@ import fondoMordor.*
 import movimiento.*
 import personaje.*
 import enemigos.*
+import hordas.*
 
 program juego {
 	game.title("Lord Of The Rings")
-	game.width(27)
-	game.height(15)
-	game.addVisual(mordor)
-	game.addVisual(aragorn)
-	const urukhai = new Enemigo(image="enemigos/orco.png", position = game.at(2, 0))
-	const urukhai2 = new Enemigo(image="enemigos/orco.png", position = game.at(17, 0))
-	game.addVisual(urukhai)
-	game.addVisual(urukhai2)
-	urukhai.ejecutarMovimiento()
-	movimiento.configurarFlechas(aragorn)
-	game.onCollideDo(aragorn, {objeto => objeto.teEncontro(aragorn)})
+	hordaUno.inicio()
 	game.start()
 }
