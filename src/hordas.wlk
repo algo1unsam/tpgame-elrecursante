@@ -25,17 +25,43 @@ class Horda{
 		game.addVisual(aragorn)
 		movimiento.configurarFlechas(aragorn)
 	    game.onCollideDo(aragorn, {objeto => objeto.teEncontro(aragorn)})
+	    
 	}
 }
 
 object hordaUno inherits Horda{
 	
+	
+	
 	override method configurate(){
 		super()
-		const urukhai = new Enemigo(image="enemigos/orco.png", position = game.at(2, 0))
-		const urukhai2 = new Enemigo(image="enemigos/orco.png", position = game.at(17, 0))
+		const urukhai = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 0))
+		const urukhai2 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(17, 0))
 		game.addVisual(urukhai)
 		game.addVisual(urukhai2)
 		urukhai.ejecutarMovimiento()
+		urukhai2.ejecutarMovimiento()
+	}
+	
+	method dropeandoEscudo(enemigo){
+		if(enemigo.verificarVivos()){
+			hordaDos.configurate()	
+		}
+		
+	}
+	
+	//method pasarNivel(){
+		//if(aragorn.tieneEscudo()){
+			//game.say(cofre,"Se avecina una nueva horda")
+		//}
+	//}	
+}
+
+object hordaDos inherits Horda{
+	
+	override method configurate(){
+		super()
+			const urukhai = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 5))
+			game.addVisual(urukhai)
 	}
 }

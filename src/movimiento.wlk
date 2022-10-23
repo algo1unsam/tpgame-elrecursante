@@ -1,5 +1,7 @@
 import wollok.game.*
 import personaje.*
+import enemigos.*
+import hordas.*
 
 class Direccion{
 		var property nombre
@@ -46,7 +48,7 @@ object movimiento{
 		keyboard.right().onPressDo{ self.mover(derecha,visual) }
 		keyboard.up().onPressDo{ self.mover(arriba,visual) }
 		keyboard.down().onPressDo{ self.mover(abajo,visual) }
-		keyboard.space().onPressDo{visual.atacar()}
+		keyboard.space().onPressDo{visual.atacar(1)}
 		//keyboard.d().onPressDo{visual.depositarEnCofre()}
 			
 	}

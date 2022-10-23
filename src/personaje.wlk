@@ -1,6 +1,7 @@
 import wollok.game.*
 import movimiento.*
 import enemigos.*
+import acciones.*
 
 object aragorn{
 	var property position= game.at(12, 0)
@@ -45,6 +46,11 @@ object aragorn{
 	method murio(){
 		return (vida==0)
 	}
-	
+
+	method atacar(danio){
+ 		const objetosDebajo = game.colliders(self)
+ 		objetosDebajo.forEach({ objeto =>  objeto.meAtacaron(danio) })
+ 	}
+		
 }
 

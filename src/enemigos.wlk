@@ -3,6 +3,7 @@ import personaje.*
 import movimiento.*
 
 class Objeto{
+	
 	method teEncontro(alguien){}
 	
 	method meAtacaron(valor){}
@@ -17,6 +18,16 @@ class Enemigo inherits Objeto{
 	var property vida = 1
 	var property image
 	var property position = game.origin()
+	var property velocidad
+	const cantEnemigosVivos = []
+	
+	method agregar(){
+		cantEnemigosVivos.add(self)
+	}
+	
+	method verificarVivos(){
+		return cantEnemigosVivos.isEmpty()
+	}
 	
 	override method soyEnemigo(){return true}
 	
@@ -46,32 +57,14 @@ class Enemigo inherits Objeto{
 			vida = vida - valor
 			if (vida == 0){
 				game.removeVisual(self)
+				cantEnemigosVivos.remove(self)
 			}	
 	}
 	
 	method ejecutarMovimiento(){
-		game.onTick(2000, "movimiento", {self.seguirHeroe()})
-	}
-	
-	
-}
-
-class Arma inherits Objeto {
-	
-	override method soyArma(){return true}
-	
-	method atacar(armaDefault){
-		self.verQueHayAbajoYGenerarDanio(armaDefault)
-	}
-	
-	method verQueHayAbajoYGenerarDanio(enemigo){
-		if (game.hasVisual(enemigo)){
-			const objetosDebajo = game.colliders(enemigo)
-			if(!objetosDebajo.isEmpty()){
-				objetosDebajo.forEach({ objeto =>  objeto.meAtacaron(1) })
-			}
-		}
+		self.agregar()
+		game.onTick(velocidad, "movimiento", {self.seguirHeroe()})
 	}
 }
 
-const default = new Arma()
+
