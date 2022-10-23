@@ -3,6 +3,7 @@ import wollok.game.*
 class Visual{
 	var property image
 	var property position = game.origin()
+	method teEncontro(param){}
 }
 
 const mordor = new Visual(

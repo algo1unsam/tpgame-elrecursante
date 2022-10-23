@@ -7,6 +7,7 @@ object aragorn{
 	var property position= game.at(12, 0)
 	var property vida = 10
 	var property orientacion = derecha
+	var property inventario = []
 	
 	method validarPosition(_position){
 		mundo.validarPosition(_position, self)

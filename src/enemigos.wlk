@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import movimiento.*
+import hordas.*
 
 class Objeto{
 	
@@ -10,26 +11,26 @@ class Objeto{
 	
 	method soyEnemigo(){return false}
 	
-	method soyArma(){return false}
 	
 }
 
 class Enemigo inherits Objeto{
+	
 	var property vida = 1
 	var property image
 	var property position = game.origin()
 	var property velocidad
-	const cantEnemigosVivos = []
 	
-	method agregar(){
-		cantEnemigosVivos.add(self)
-	}
-	
-	method verificarVivos(){
-		return cantEnemigosVivos.isEmpty()
-	}
 	
 	override method soyEnemigo(){return true}
+	
+	method agregar(){
+		pasarNivel.agregar(self)
+	}
+	
+	method delete(){
+		pasarNivel.delete(self)
+	}
 	
 	method seguirHeroe(){
 		if ( ( (self.position().y()) != (aragorn.position().y()) ) || ( (self.position().x()) != (aragorn.position().x()))){
@@ -57,7 +58,7 @@ class Enemigo inherits Objeto{
 			vida = vida - valor
 			if (vida == 0){
 				game.removeVisual(self)
-				cantEnemigosVivos.remove(self)
+				self.delete()
 			}	
 	}
 	
@@ -67,4 +68,19 @@ class Enemigo inherits Objeto{
 	}
 }
 
-
+object pasarNivel{
+	
+	var property cantEnemigosVivos = #{}
+	
+	method verificar(){
+		return cantEnemigosVivos.isEmpty()
+	}
+	
+	method agregar(enemigo){
+		cantEnemigosVivos.add(enemigo)
+	}
+	
+	method delete(enemigo){
+		cantEnemigosVivos.remove(enemigo)
+	}
+}

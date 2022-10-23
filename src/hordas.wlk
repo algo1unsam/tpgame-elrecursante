@@ -4,6 +4,7 @@ import fondoMordor.*
 import movimiento.*
 import personaje.*
 import audio.*
+import acciones.*
 
 class Horda{
 	
@@ -31,8 +32,6 @@ class Horda{
 
 object hordaUno inherits Horda{
 	
-	
-	
 	override method configurate(){
 		super()
 		const urukhai = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 0))
@@ -41,27 +40,24 @@ object hordaUno inherits Horda{
 		game.addVisual(urukhai2)
 		urukhai.ejecutarMovimiento()
 		urukhai2.ejecutarMovimiento()
+		//Pasar pasa ahora hay que ponerle condicion
+		//keyboard.p().onPressDo{self.dropeandoEscudo()}
+		game.addVisual(escudo)
 	}
 	
-	method dropeandoEscudo(enemigo){
-		if(enemigo.verificarVivos()){
-			hordaDos.configurate()	
+	method dropeandoEscudo(){
+		if(pasarNivel.verificar()){
+			hordaDos.configurate()
 		}
-		
 	}
-	
-	//method pasarNivel(){
-		//if(aragorn.tieneEscudo()){
-			//game.say(cofre,"Se avecina una nueva horda")
-		//}
-	//}	
+
 }
 
 object hordaDos inherits Horda{
 	
 	override method configurate(){
 		super()
-			const urukhai = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 5))
-			game.addVisual(urukhai)
+		const urukhai3 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 5))
+		game.addVisual(urukhai3)
 	}
 }
