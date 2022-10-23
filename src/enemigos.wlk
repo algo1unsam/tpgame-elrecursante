@@ -11,7 +11,6 @@ class Objeto{
 	
 	method soyEnemigo(){return false}
 	
-	
 }
 
 class Enemigo inherits Objeto{
@@ -21,8 +20,7 @@ class Enemigo inherits Objeto{
 	var property position = game.origin()
 	var property velocidad
 	
-	
-	override method soyEnemigo(){return true}
+	//override method soyEnemigo(){return true}
 	
 	method agregar(){
 		pasarNivel.agregar(self)

@@ -7,7 +7,8 @@ object aragorn{
 	var property position= game.at(12, 0)
 	var property vida = 10
 	var property orientacion = derecha
-	var property inventario = []
+	var property tieneEscudo = false
+	var property tieneAnduril = false
 	
 	method validarPosition(_position){
 		mundo.validarPosition(_position, self)
@@ -26,8 +27,12 @@ object aragorn{
 	}
 	
 	method image() {
+		if(tieneEscudo){
+			return "personaje/aragorn" + orientacion.nombre() + escudo.nombre() + ".png"
+		}
 		return "personaje/aragorn" + orientacion.nombre() + ".png"
-	}	
+	}
+	
 	
 	method meAtacaron(valor){
 		self.restarVida(valor)
@@ -52,6 +57,6 @@ object aragorn{
  		const objetosDebajo = game.colliders(self)
  		objetosDebajo.forEach({ objeto =>  objeto.meAtacaron(danio) })
  	}
-		
+	
 }
 

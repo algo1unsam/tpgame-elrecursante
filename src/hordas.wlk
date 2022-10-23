@@ -40,13 +40,21 @@ object hordaUno inherits Horda{
 		game.addVisual(urukhai2)
 		urukhai.ejecutarMovimiento()
 		urukhai2.ejecutarMovimiento()
-		//Pasar pasa ahora hay que ponerle condicion
-		//keyboard.p().onPressDo{self.dropeandoEscudo()}
-		game.addVisual(escudo)
+		game.onTick(1000, "verificar", {self.dropeandoEscudo()})
+		self.pasarHorda()
 	}
 	
 	method dropeandoEscudo(){
 		if(pasarNivel.verificar()){
+			game.removeTickEvent("verificar")
+			game.addVisual(escudo)
+			game.onTick(1000, "pasarHorda2", {self.pasarHorda()})
+		}
+	}
+	
+	method pasarHorda(){
+		if(aragorn.tieneEscudo()){
+			game.removeTickEvent("pasarHorda2")
 			hordaDos.configurate()
 		}
 	}
