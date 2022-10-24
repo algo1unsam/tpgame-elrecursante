@@ -9,7 +9,7 @@ class Objeto{
 	
 	method meAtacaron(valor){}
 	
-	method soyEnemigo(){return false}
+	//method soyEnemigo(){return false}
 	
 }
 
@@ -50,7 +50,7 @@ class Enemigo inherits Objeto{
 		
 	method atacar(){
 			return 1
-		}
+	}
 		
 	override method meAtacaron(valor){
 			vida = vida - valor
@@ -64,6 +64,10 @@ class Enemigo inherits Objeto{
 		self.agregar()
 		game.onTick(velocidad, "movimiento", {self.seguirHeroe()})
 	}
+}
+
+class Urukhai inherits Enemigo{
+		
 }
 
 object pasarNivel{

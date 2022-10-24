@@ -67,5 +67,33 @@ object hordaDos inherits Horda{
 		super()
 		const urukhai3 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 5))
 		game.addVisual(urukhai3)
+		urukhai3.ejecutarMovimiento()
+		game.onTick(3000, "verificar", {self.dropeandoAnduril()})
+		self.pasarHorda()
 	}
+	
+	method dropeandoAnduril(){
+		if(pasarNivel.verificar()){
+			game.removeTickEvent("verificar")
+			game.addVisual(anduril)
+			game.onTick(1000, "pasarHorda3", {self.pasarHorda()})
+		}
+	}
+	
+	method pasarHorda(){
+		if(aragorn.tieneAnduril()){
+			game.removeTickEvent("pasarHorda3")
+			hordaTres.configurate()
+		}
+	}
+}
+
+object hordaTres inherits Horda{
+	
+	override method configurate(){
+		super()
+		const urukhai4 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(1, 12))
+		game.addVisual(urukhai4)
+	}
+	
 }

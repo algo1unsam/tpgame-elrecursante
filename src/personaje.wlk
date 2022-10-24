@@ -27,7 +27,9 @@ object aragorn{
 	}
 	
 	method image() {
-		if(tieneEscudo){
+		if(tieneAnduril){
+			return "personaje/aragorn" + orientacion.nombre() + anduril.nombre() + ".png"	
+		}else if(tieneEscudo){
 			return "personaje/aragorn" + orientacion.nombre() + escudo.nombre() + ".png"
 		}
 		return "personaje/aragorn" + orientacion.nombre() + ".png"

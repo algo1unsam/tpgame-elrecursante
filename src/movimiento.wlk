@@ -19,18 +19,18 @@ object derecha inherits Direccion(nombre="Derecha") {
 	}	
 }
 
-object abajo inherits Direccion(nombre="Frente"){
-	method siguiente(position) {
-		return position.down(1)
-	}
-}
+//object abajo inherits Direccion(nombre="Frente"){
+//	method siguiente(position) {
+//		return position.down(1)
+//	}
+//}
 
-object arriba inherits Direccion(nombre="Espalda"){
-	method siguiente(position) {
-		return position.up(1)
-	}
-		
-}
+//object arriba inherits Direccion(nombre="Espalda"){
+//	method siguiente(position) {
+//		return position.up(1)
+//	}
+//}
+
 object mundo {
 	method validarPosition(position,_aragorn) {
 		if (! position.x().between(0, game.width() -1)){
@@ -46,8 +46,8 @@ object movimiento{
 	method configurarFlechas(visual){
 		keyboard.left().onPressDo{ self.mover(izquierda,visual) } 
 		keyboard.right().onPressDo{ self.mover(derecha,visual) }
-		keyboard.up().onPressDo{ self.mover(arriba,visual) }
-		keyboard.down().onPressDo{ self.mover(abajo,visual) }
+		//keyboard.up().onPressDo{ self.mover(arriba,visual) }
+		//keyboard.down().onPressDo{ self.mover(abajo,visual) }
 		keyboard.space().onPressDo{visual.atacar(1)}
 		//keyboard.d().onPressDo{visual.depositarEnCofre()}
 			

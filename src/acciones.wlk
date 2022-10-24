@@ -20,5 +20,13 @@ object escudo inherits Armas(image="armas/escudo.png"){
 	}
 }
 
+object anduril inherits Armas(image="armas/anduril.png"){
+	var property nombre = self
+	
+	override method teEncontro(alguien){
+		aragorn.tieneAnduril(true)
+		game.removeVisual(self)
+	}
+}
 
 
