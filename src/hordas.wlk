@@ -15,7 +15,13 @@ class Horda{
 	    game.height(15)
 	    game.addVisual(menu)
 	    game.schedule(1,{audio.reproducirCancion("sonidos/menu")})
-	    keyboard.enter().onPressDo{self.configurate()}
+	    keyboard.enter().onPressDo{self.menuDos()}
+	}
+	
+	method menuDos(){
+		game.clear()
+		game.addVisual(menu2)
+		keyboard.enter().onPressDo{self.configurate()}
 	}
 	
 	method configurate() {
@@ -34,12 +40,19 @@ object hordaUno inherits Horda{
 	
 	override method configurate(){
 		super()
-		const urukhai = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 0))
-		const urukhai2 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(17, 0))
-		game.addVisual(urukhai)
-		game.addVisual(urukhai2)
-		urukhai.ejecutarMovimiento()
-		urukhai2.ejecutarMovimiento()
+		
+		//Genero enemigos 
+		const orco1 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(5, 0))
+		const orco2 = new Enemigo(velocidad=800,image="enemigos/orco.png", position = game.at(17, 0))
+		const orco3 = new Enemigo(velocidad=1200,image="enemigos/orco.png", position = game.at(1, 0))
+		game.addVisual(orco1)
+		game.addVisual(orco2)
+		game.addVisual(orco3)
+		orco1.ejecutarMovimiento()
+		orco2.ejecutarMovimiento()
+		orco3.ejecutarMovimiento()
+		
+		//Pasar Horda Dos
 		game.onTick(1000, "verificar", {self.dropeandoEscudo()})
 		self.pasarHorda()
 	}
@@ -65,9 +78,16 @@ object hordaDos inherits Horda{
 	
 	override method configurate(){
 		super()
-		const urukhai3 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(2, 5))
-		game.addVisual(urukhai3)
-		urukhai3.ejecutarMovimiento()
+		
+		//Genero Enemigos
+		const urukhai = new Enemigo(velocidad=700,image="enemigos/urukhai.png", position = game.at(25, 0))
+		const orco4 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(15, 0))
+		game.addVisual(urukhai)
+		game.addVisual(orco4)
+		urukhai.ejecutarMovimiento()
+		orco4.ejecutarMovimiento()
+		
+		//Paso Horda Tres
 		game.onTick(3000, "verificar", {self.dropeandoAnduril()})
 		self.pasarHorda()
 	}

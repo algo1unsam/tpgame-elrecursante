@@ -15,3 +15,8 @@ const menu = new Visual(
 	image = "fondos/menu.png",
 	position = new Position(x=0,y=0)
 )
+
+const menu2 = new Visual(
+	image = "fondos/menu2.png",
+	position = new Position(x=0,y=0)
+)

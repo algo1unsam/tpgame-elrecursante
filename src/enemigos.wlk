@@ -31,12 +31,8 @@ class Enemigo inherits Objeto{
 	}
 	
 	method seguirHeroe(){
-		if ( ( (self.position().y()) != (aragorn.position().y()) ) || ( (self.position().x()) != (aragorn.position().x()))){
-			if( (self.position().y()) - (aragorn.position().y()) > 0 ){
-				position = self.position().down(1)
-			}else if((self.position().y()) - (aragorn.position().y()) < 0){
-				position = self.position().up(1)
-			}else if(( (self.position().x()) - (aragorn.position().x()) ) < 0){
+		if (self.position().x() != aragorn.position().x()){
+			if(( (self.position().x()) - (aragorn.position().x()) ) < 0){
 				position =  self.position().right(1)
 			}else if(( (self.position().x()) - (aragorn.position().x()) ) > 0){
 				position = self.position().left(1)
@@ -66,9 +62,6 @@ class Enemigo inherits Objeto{
 	}
 }
 
-class Urukhai inherits Enemigo{
-		
-}
 
 object pasarNivel{
 	
