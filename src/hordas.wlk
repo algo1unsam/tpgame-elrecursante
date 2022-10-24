@@ -29,6 +29,7 @@ class Horda{
 		game.addVisual(mordor)	
 		game.schedule(1,{audio.pararCancion()})
 		//Visuales	
+		mundo.mostrarVida()
 		game.addVisual(aragorn)
 		movimiento.configurarFlechas(aragorn)
 	    game.onCollideDo(aragorn, {objeto => objeto.teEncontro(aragorn)})
@@ -67,6 +68,7 @@ object hordaUno inherits Horda{
 	
 	method pasarHorda(){
 		if(aragorn.tieneEscudo()){
+			aragorn.tengoEscudo()
 			game.removeTickEvent("pasarHorda2")
 			hordaDos.configurate()
 		}
@@ -102,6 +104,7 @@ object hordaDos inherits Horda{
 	
 	method pasarHorda(){
 		if(aragorn.tieneAnduril()){
+			aragorn.tengoAnduril()
 			game.removeTickEvent("pasarHorda3")
 			hordaTres.configurate()
 		}
@@ -112,8 +115,9 @@ object hordaTres inherits Horda{
 	
 	override method configurate(){
 		super()
-		const urukhai4 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(1, 12))
+		const urukhai4 = new Enemigo(vida=30,velocidad=1000,image="enemigos/orco.png", position = game.at(9, 0))
 		game.addVisual(urukhai4)
+		urukhai4.ejecutarMovimiento()
 	}
 	
 }

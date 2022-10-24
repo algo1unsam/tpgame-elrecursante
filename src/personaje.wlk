@@ -2,13 +2,17 @@ import wollok.game.*
 import movimiento.*
 import enemigos.*
 import acciones.*
+import fondoMordor.*
 
 object aragorn{
 	var property position= game.at(12, 0)
-	var property vida = 10
+	const property vidaInicial = 20
+	var property vida = 20
 	var property orientacion = derecha
 	var property tieneEscudo = false
 	var property tieneAnduril = false
+	var property ataque = 1
+	
 	
 	method validarPosition(_position){
 		mundo.validarPosition(_position, self)
@@ -22,8 +26,17 @@ object aragorn{
 			position = proximaPosition		
 		}else{
 			game.allVisuals().forEach({ visual => game.removeVisual(visual)})
+			game.addVisual(gameOver)
 			game.schedule(4000, {game.stop()})
 		}	
+	}
+	
+	method tengoAnduril(){
+		ataque = ataque + 9
+	}
+	
+	method tengoEscudo(){
+		vida = vida + 5
 	}
 	
 	method image() {
@@ -38,6 +51,7 @@ object aragorn{
 	
 	method meAtacaron(valor){
 		self.restarVida(valor)
+		coleccionDeVidas.removerVida()
 	}
 	
 	method restarVida(valor){

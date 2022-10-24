@@ -2,6 +2,7 @@ import wollok.game.*
 import personaje.*
 import enemigos.*
 import hordas.*
+import acciones.*
 
 class Direccion{
 		var property nombre
@@ -41,6 +42,10 @@ object mundo {
 		}
 	}
 	
+	method mostrarVida(){
+		coleccionDeVidas.image()	
+	}
+	
 }
 object movimiento{
 	method configurarFlechas(visual){
@@ -48,8 +53,7 @@ object movimiento{
 		keyboard.right().onPressDo{ self.mover(derecha,visual) }
 		//keyboard.up().onPressDo{ self.mover(arriba,visual) }
 		//keyboard.down().onPressDo{ self.mover(abajo,visual) }
-		keyboard.space().onPressDo{visual.atacar(1)}
-		//keyboard.d().onPressDo{visual.depositarEnCofre()}
+		keyboard.space().onPressDo{visual.atacar(aragorn.ataque())}
 			
 	}
 	

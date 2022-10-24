@@ -44,9 +44,9 @@ class Enemigo inherits Objeto{
 			enemigo.restarVida(1)
 		}
 		
-	method atacar(){
-			return 1
-	}
+	//method atacar(){
+	//		return 1
+	//}
 		
 	override method meAtacaron(valor){
 			vida = vida - valor

@@ -20,3 +20,8 @@ const menu2 = new Visual(
 	image = "fondos/menu2.png",
 	position = new Position(x=0,y=0)
 )
+
+const gameOver = new Visual(
+	image = "fondos/gameover.png",
+	position = new Position(x=0,y=0)
+)
