@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+# Lord Of The Rings
 
 ## Equipo de desarrollo
 
@@ -10,7 +10,7 @@
 
 ## Reglas de Juego / Instrucciones
 
-(Escribirlas)
+Debes Matar a todos los enemigos de una horda y recoger el arma soltada para iniciar la segunda ronda
 
 
 ## Otros
