@@ -15,8 +15,7 @@
 
 ## Reglas de Juego / Instrucciones
 
-Debes Matar a todos los enemigos de una horda y recoger el arma soltada para iniciar la segunda ronda
-
+Debes Matar a todos los enemigos de una horda y recoger el arma soltada para iniciar la siguiente horda [son 3 hordas]
 
 ## Otros
 
