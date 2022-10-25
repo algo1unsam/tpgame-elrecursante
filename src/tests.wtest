@@ -45,7 +45,13 @@ describe "TEST" {
 		assert.equals(1,aragorn.ataque())
 		game.addVisual(anduril)
 		anduril.teEncontro(aragorn)
-		assert.equals(10,aragorn.ataque())
+		assert.equals(3,aragorn.ataque())
+	}
+
+	test "TOMO POTA"{
+		game.addVisual(pota1)
+		pota1.teEncontro(aragorn)
+		assert.equals(22,aragorn.vida())
 	}
 }
 

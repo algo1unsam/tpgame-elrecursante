@@ -6,7 +6,7 @@ import fondoMordor.*
 
 object aragorn{
 	var property position= game.at(12, 0)
-	const property vidaInicial = 20
+	const property vidaMax = 20
 	var property vida = 20
 	var property orientacion = derecha
 	var property tieneEscudo = false
@@ -32,7 +32,7 @@ object aragorn{
 	}
 	
 	method tengoAnduril(){
-		ataque =+ 10
+		ataque = ataque + 2
 	}
 	
 	method tengoEscudo(){
@@ -74,5 +74,8 @@ object aragorn{
  		objetosDebajo.forEach({ objeto =>  objeto.meAtacaron(danio) })
  	}
 	
+	method tomarPota(valor){
+		vida = vida + valor
+	}
 }
 

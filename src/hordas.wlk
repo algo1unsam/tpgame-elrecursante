@@ -53,14 +53,13 @@ object hordaUno inherits Horda{
 		const orco2 = new Enemigo(velocidad=800,image="enemigos/orco.png", position = game.at(17, 0))
 		const orco3 = new Enemigo(velocidad=1200,image="enemigos/orco.png", position = game.at(1, 0))
 		const orco4 = new Enemigo(velocidad=1200,image="enemigos/orco.png", position = game.at(19, 0))	
-		game.addVisual(orco1)
-		game.addVisual(orco2)
-		game.addVisual(orco3)
-		game.addVisual(orco4)
+		const orco5 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(7, 0))
 		orco1.ejecutarMovimiento()
 		orco2.ejecutarMovimiento()
 		orco3.ejecutarMovimiento()
 		orco4.ejecutarMovimiento()
+		orco5.ejecutarMovimiento()
+		pasarNivel.addVisualEnemigos()
 		
 		//Pasar Horda Dos
 		game.onTick(1000, "verificar", {self.dropeandoEscudo()})
@@ -98,18 +97,13 @@ object hordaDos inherits Horda{
 		const urukhai3 = new Enemigo(velocidad=800,image="enemigos/urukhai.png", position = game.at(3, 0))
 		const urukhai4 = new Enemigo(velocidad=700,image="enemigos/urukhai.png", position = game.at(4, 0))
 		const urukhai5 = new Enemigo(vida=2,velocidad=1000,image="enemigos/urukhaiEscudo.png", position = game.at(1, 0))		
-		game.addVisual(urukhai)
-		game.addVisual(urukhai2)
-		game.addVisual(urukhai3)
-		game.addVisual(urukhai4)
-		game.addVisual(urukhai5)
-		game.addVisual(orco1)
 		urukhai.ejecutarMovimiento()
 		urukhai2.ejecutarMovimiento()
 		urukhai3.ejecutarMovimiento()
 		urukhai4.ejecutarMovimiento()
 		urukhai5.ejecutarMovimiento()
 		orco1.ejecutarMovimiento()
+		pasarNivel.addVisualEnemigos()
 		
 		//Paso Horda Tres
 		game.onTick(1000, "verificar", {self.dropeandoAnduril()})
@@ -130,6 +124,7 @@ object hordaDos inherits Horda{
 			aragorn.tengoAnduril()
 			game.removeTickEvent("pasarHorda3")
 			hordaTres.configurate()
+			
 		}
 	}
 }
@@ -138,9 +133,23 @@ object hordaTres inherits Horda{
 	
 	override method configurate(){
 		super()
-		const urukhai4 = new Enemigo(vida=30,velocidad=1000,image="enemigos/orco.png", position = game.at(9, 0))
-		game.addVisual(urukhai4)
+		const urukhai1 = new Enemigo(vida=2,velocidad=300,image="enemigos/urukhai.png", position = game.at(9, 0))
+		const urukhai2 = new Enemigo(vida=2,velocidad=500,image="enemigos/urukhai.png", position = game.at(9, 0))
+		const urukhai3 = new Enemigo(vida=2,velocidad=1000,image="enemigos/urukhaiEscudo.png", position = game.at(9, 0))
+		const urukhai4 = new Enemigo(vida=2,velocidad=1200,image="enemigos/urukhaiEscudo.png", position = game.at(9, 0))
+		const urukhai5 = new Enemigo(vida=2,velocidad=700,image="enemigos/urukhaiEscudo.png", position = game.at(9, 0))
+		const urukhai6 = new Enemigo(vida=2,velocidad=800,image="enemigos/urukhaiEscudo.png", position = game.at(9, 0))
+		const urukhai7 = new Enemigo(velocidad=900,image="enemigos/urukhaiEscudo.png", position = game.at(9, 0))	
+		urukhai1.ejecutarMovimiento()
+		urukhai2.ejecutarMovimiento()
+		urukhai3.ejecutarMovimiento()
 		urukhai4.ejecutarMovimiento()
+		urukhai5.ejecutarMovimiento()
+		urukhai6.ejecutarMovimiento()
+		urukhai7.ejecutarMovimiento()
+		pasarNivel.addVisualEnemigos()
+		game.addVisual(pota1)
+		game.addVisual(pota2)
 		
 		//GANAR
 		game.onTick(1000, "verificar", {self.ganar()})

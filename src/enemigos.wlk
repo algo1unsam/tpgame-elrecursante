@@ -31,13 +31,27 @@ class Enemigo inherits Objeto{
 	}
 	
 	method seguirHeroe(){
+		if ( ((self.position().y()) != (aragorn.position().y()) ) || ( (self.position().x()) != (aragorn.position().x()) ) ){
+			if( (self.position().y()) - (aragorn.position().y()) > 0 ){
+				position = self.position().down(1)
+			}else if((self.position().y()) - (aragorn.position().y()) < 0){
+				position = self.position().up(1)
+			}else if(( (self.position().x()) - (aragorn.position().x()) ) < 0){
+				position =  self.position().right(1)
+			}else if(( (self.position().x()) - (aragorn.position().x()) ) > 0){
+				position = self.position().left(1)
+			}
+		}	
+		/* 
 		if (self.position().x() != aragorn.position().x()){
 			if(( (self.position().x()) - (aragorn.position().x()) ) < 0){
 				position =  self.position().right(1)
 			}else if(( (self.position().x()) - (aragorn.position().x()) ) > 0){
 				position = self.position().left(1)
 			}
-		}	
+		}
+		
+		*/	
 	}
 	
 	override method teEncontro(enemigo){
@@ -50,7 +64,7 @@ class Enemigo inherits Objeto{
 		
 	override method meAtacaron(valor){
 			vida = vida - valor
-			if (vida == 0){
+			if (vida <= 0){
 				game.removeVisual(self)
 				self.delete()
 			}	
@@ -77,5 +91,13 @@ object pasarNivel{
 	
 	method delete(enemigo){
 		cantEnemigosVivos.remove(enemigo)
+	}
+	
+	method addVisualEnemigos(){
+		cantEnemigosVivos.forEach({ i => game.addVisual(i)})
+	}
+	
+	method ejecutarMovimientoEnemigos(){
+		cantEnemigosVivos.forEach({i => i.ejecutarMovimiento()})
 	}
 }

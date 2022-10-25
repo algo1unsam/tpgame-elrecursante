@@ -31,6 +31,16 @@ object anduril inherits Armas(image="armas/anduril.png",position= game.at(12, 0)
 	}
 }
 
+class Pota inherits Armas(image="vida/pota.png"){
+	override method teEncontro(alguien){
+		game.removeVisual(self)
+		alguien.tomarPota(2)
+	}
+}
+
+const pota1 = new Pota(position= game.at(12, 0))
+const pota2 = new Pota(position= game.at(12, 4))
+
 /* 
 class Vidas{
 	var property image
@@ -43,16 +53,13 @@ const barraVida50 = new Vidas(image="vida/vida50.png")
 const barraVida25 = new Vidas(image="vida/vida25.png")
 
 object coleccionDeVidas{
-	var property vidas = #{}
+	var property vidas = []
 	
 	method image() {
 		self.calculandoVida()
-		if(vidas.isEmpty()){
-			vidas.clear()
-			vidas.forEach({i => game.removeVisual(i)})
-		}
-		vidas.forEach({ i => game.addVisual(i)})	
+		vidas.forEach({ i => game.addVisual(i)})
 	}
+	
 	
 	method agregarVida(){
 		
@@ -72,26 +79,24 @@ object coleccionDeVidas{
 		}else if(aragorn.vida() <= self.vida100()){
 			vidas.add(barraVida100)
 		}
-		
 	}
 	
 	method vida100(){
-		return (aragorn.vidaInicial() * 100 ) / 100
+		return (aragorn.vidaMax() * 100 ) / 100
 	}
 	
 	method vida75(){
-		return (aragorn.vidaInicial() * 75 ) / 100
+		return (aragorn.vidaMax() * 75 ) / 100
 	}
 	
 	method vida50(){
-		return (aragorn.vidaInicial() * 50 ) / 100
+		return (aragorn.vidaMax() * 50 ) / 100
 	}
 	
 	method vida25(){
-		return (aragorn.vidaInicial() * 25 ) / 100
+		return (aragorn.vidaMax() * 25 ) / 100
 	}
 }
-
 */
 
 

@@ -7,7 +7,7 @@ class Visual{
 }
 
 const mordor = new Visual(
-	image = "fondos/mordor.png",
+	image = "fondos/mordor2.png",
 	position = new Position(x=0,y=0)
 )
 
