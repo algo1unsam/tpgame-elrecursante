@@ -21,17 +21,23 @@ class Horda{
 	method menuDos(){
 		game.clear()
 		game.addVisual(menu2)
-		keyboard.enter().onPressDo{self.configurate()}
+		keyboard.enter().onPressDo{self.musica()}
+	}
+	
+	method musica(){
+		audio.pararCancion()
+		audio.reproducirCancion("sonidos/musica")
+		self.configurate()
 	}
 	
 	method configurate() {
 		game.clear()
-		game.addVisual(mordor)	
-		game.schedule(1,{audio.pararCancion()})
+		game.addVisual(mordor)
+		
 		//Visuales	
-		mundo.mostrarVida()
 		game.addVisual(aragorn)
 		movimiento.configurarFlechas(aragorn)
+		//mundo.mostrarVida()
 	    game.onCollideDo(aragorn, {objeto => objeto.teEncontro(aragorn)})
 	    
 	}
@@ -46,12 +52,15 @@ object hordaUno inherits Horda{
 		const orco1 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(5, 0))
 		const orco2 = new Enemigo(velocidad=800,image="enemigos/orco.png", position = game.at(17, 0))
 		const orco3 = new Enemigo(velocidad=1200,image="enemigos/orco.png", position = game.at(1, 0))
+		const orco4 = new Enemigo(velocidad=1200,image="enemigos/orco.png", position = game.at(19, 0))	
 		game.addVisual(orco1)
 		game.addVisual(orco2)
 		game.addVisual(orco3)
+		game.addVisual(orco4)
 		orco1.ejecutarMovimiento()
 		orco2.ejecutarMovimiento()
 		orco3.ejecutarMovimiento()
+		orco4.ejecutarMovimiento()
 		
 		//Pasar Horda Dos
 		game.onTick(1000, "verificar", {self.dropeandoEscudo()})
@@ -62,6 +71,7 @@ object hordaUno inherits Horda{
 		if(pasarNivel.verificar()){
 			game.removeTickEvent("verificar")
 			game.addVisual(escudo)
+			game.schedule(500, { game.say(aragorn, "¡Equipate el Escudo de GONDOR!!!") })
 			game.onTick(1000, "pasarHorda2", {self.pasarHorda()})
 		}
 	}
@@ -82,15 +92,27 @@ object hordaDos inherits Horda{
 		super()
 		
 		//Genero Enemigos
-		const urukhai = new Enemigo(velocidad=700,image="enemigos/urukhai.png", position = game.at(25, 0))
-		const orco4 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(15, 0))
+		const orco1 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(26, 0))
+		const urukhai = new Enemigo(velocidad=1000,image="enemigos/urukhai.png", position = game.at(25, 0))
+		const urukhai2 = new Enemigo(velocidad=900,image="enemigos/urukhai.png", position = game.at(2, 0))
+		const urukhai3 = new Enemigo(velocidad=800,image="enemigos/urukhai.png", position = game.at(3, 0))
+		const urukhai4 = new Enemigo(velocidad=700,image="enemigos/urukhai.png", position = game.at(4, 0))
+		const urukhai5 = new Enemigo(vida=2,velocidad=1000,image="enemigos/urukhaiEscudo.png", position = game.at(1, 0))		
 		game.addVisual(urukhai)
-		game.addVisual(orco4)
+		game.addVisual(urukhai2)
+		game.addVisual(urukhai3)
+		game.addVisual(urukhai4)
+		game.addVisual(urukhai5)
+		game.addVisual(orco1)
 		urukhai.ejecutarMovimiento()
-		orco4.ejecutarMovimiento()
+		urukhai2.ejecutarMovimiento()
+		urukhai3.ejecutarMovimiento()
+		urukhai4.ejecutarMovimiento()
+		urukhai5.ejecutarMovimiento()
+		orco1.ejecutarMovimiento()
 		
 		//Paso Horda Tres
-		game.onTick(3000, "verificar", {self.dropeandoAnduril()})
+		game.onTick(1000, "verificar", {self.dropeandoAnduril()})
 		self.pasarHorda()
 	}
 	
@@ -98,6 +120,7 @@ object hordaDos inherits Horda{
 		if(pasarNivel.verificar()){
 			game.removeTickEvent("verificar")
 			game.addVisual(anduril)
+			game.schedule(500, { game.say(aragorn, "Anduril... Equipatela!") })
 			game.onTick(1000, "pasarHorda3", {self.pasarHorda()})
 		}
 	}
@@ -118,6 +141,16 @@ object hordaTres inherits Horda{
 		const urukhai4 = new Enemigo(vida=30,velocidad=1000,image="enemigos/orco.png", position = game.at(9, 0))
 		game.addVisual(urukhai4)
 		urukhai4.ejecutarMovimiento()
+		
+		//GANAR
+		game.onTick(1000, "verificar", {self.ganar()})
 	}
 	
+	method ganar(){
+		if(pasarNivel.verificar()){
+			game.removeTickEvent("verificar")
+			game.addVisual(ganaste)
+			game.schedule(4000, {game.stop()})
+		}
+	}
 }

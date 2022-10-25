@@ -1,6 +1,51 @@
+import acciones.*
+import audio.*
+import enemigos.*
+import fondoMordor.*
+import hordas.*
+import wollok.game.*
+import movimiento.*
+import personaje.*
 
-test "testX" {
+describe "TEST" {
 
-	assert.that(true)
-
+	const orco1 = new Enemigo(velocidad=1000,image="enemigos/orco.png", position = game.at(5, 0))
+	
+	method initialize() {
+		aragorn.position(game.at(12, 0))
+		game.addVisual(aragorn)
+		game.addVisual(orco1)
+		orco1.ejecutarMovimiento()	
+	}
+	
+	test "TENGO ESCUDO" {
+		game.addVisual(escudo)
+		escudo.teEncontro(aragorn)
+		assert.that(aragorn.tieneEscudo())
+	}
+	
+	test "VIDA CON ESCUDO"{
+		//Vida Principio
+		assert.equals(20,aragorn.vida())
+		//ATACAN A ARAGORN QUEDA EN 19
+		aragorn.restarVida(1)
+		//AGARRO ESCUDO Y SE ME SUMA 5
+		game.addVisual(escudo)
+		escudo.teEncontro(aragorn)
+		assert.equals(24,aragorn.vida())
+	}
+	
+	test "TENGO ANDURIL"{
+		game.addVisual(anduril)
+		anduril.teEncontro(aragorn)
+		assert.that(aragorn.tieneAnduril())
+	}
+	
+	test "ATAQUE DEFAULT Y CON ANDURIL"{
+		assert.equals(1,aragorn.ataque())
+		game.addVisual(anduril)
+		anduril.teEncontro(aragorn)
+		assert.equals(10,aragorn.ataque())
+	}
 }
+

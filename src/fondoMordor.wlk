@@ -25,3 +25,8 @@ const gameOver = new Visual(
 	image = "fondos/gameover.png",
 	position = new Position(x=0,y=0)
 )
+
+const ganaste = new Visual(
+	image = "fondos/ganaste.png",
+	position = new Position(x=0,y=0)
+)

@@ -32,7 +32,7 @@ object aragorn{
 	}
 	
 	method tengoAnduril(){
-		ataque = ataque + 9
+		ataque =+ 10
 	}
 	
 	method tengoEscudo(){
@@ -50,8 +50,8 @@ object aragorn{
 	
 	
 	method meAtacaron(valor){
+		//coleccionDeVidas.removerVida()
 		self.restarVida(valor)
-		coleccionDeVidas.removerVida()
 	}
 	
 	method restarVida(valor){

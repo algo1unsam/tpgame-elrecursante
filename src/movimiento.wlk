@@ -43,7 +43,7 @@ object mundo {
 	}
 	
 	method mostrarVida(){
-		coleccionDeVidas.image()	
+		//coleccionDeVidas.image()	
 	}
 	
 }

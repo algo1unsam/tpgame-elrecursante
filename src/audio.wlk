@@ -11,6 +11,9 @@ object audio {
 	}
 	
 	method pararCancion(){
-		cancionActual.stop()
+		if (cancionActual != null) {
+			cancionActual.stop()
+		}
+		cancionActual = null
 	}
 }
