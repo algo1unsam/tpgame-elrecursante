@@ -1,8 +1,12 @@
 import wollok.game.*
-import pepita.*
+import fondoMordor.*
+import movimiento.*
+import personaje.*
+import enemigos.*
+import hordas.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("Lord Of The Rings")
+	hordaUno.inicio()
 	game.start()
 }
