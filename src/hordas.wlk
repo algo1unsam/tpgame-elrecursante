@@ -160,6 +160,30 @@ object hordaTres inherits Horda{
 		game.addVisual(pota2)
 		
 		//GANAR
+		game.onTick(1000, "verificar", {self.pasarHorda()})
+	}
+	
+	method pasarHorda(){
+		if(pasarNivel.verificar()){
+			game.removeTickEvent("verificar")
+			hordaCuatro.configurate()
+		}
+	}
+}
+
+object hordaCuatro inherits Horda{
+	
+	override method configurate(){
+		super()
+		const orcoFuerte1 = new Enemigo(vida=10,velocidad=500,image="enemigos/orcoFuerte1.png", position = game.at(1, 0))
+		const orcoFuerte2 = new Enemigo(vida=10,velocidad=1000,image="enemigos/orcoFuerte2.png", position = game.at(17, 0))
+		orcoFuerte1.ejecutarMovimiento()
+		orcoFuerte2.ejecutarMovimiento()
+		pasarNivel.addVisualEnemigos()
+		game.addVisual(pota1)
+		game.addVisual(pota2)
+		
+		//GANAR
 		game.onTick(1000, "verificar", {self.ganar()})
 	}
 	
@@ -171,3 +195,4 @@ object hordaTres inherits Horda{
 		}
 	}
 }
+

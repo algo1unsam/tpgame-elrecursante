@@ -38,8 +38,8 @@ class Pota inherits Armas(image="vida/pota.png"){
 	}
 }
 
-const pota1 = new Pota(position= game.at(12, 0))
-const pota2 = new Pota(position= game.at(12, 4))
+const pota1 = new Pota(position= game.at(1, 1))
+const pota2 = new Pota(position= game.at(20, 1))
 
 /* 
 class Vidas{
